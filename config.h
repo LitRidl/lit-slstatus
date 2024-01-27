@@ -1,13 +1,14 @@
-/* See LICENSE file for copyright and license details. */
+/* This is an opinionated 'config.h': modify it directly or run `cp config.def.h config.h`. */
+/* 'config.def.h' is the same as in the original slstatus repository except updated comments. */
 
 /* interval between updates (in ms) */
-const unsigned int interval = 1000;
+const unsigned int interval = 2 * 1000;
 
 /* text to show if no value can be retrieved */
 static const char unknown_str[] = "n/a";
 
 /* maximum output string length */
-#define MAXLEN 2048
+#define MAXLEN 128
 
 /*
  * function            description                     argument (example)
@@ -67,5 +68,11 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-	{ datetime, "%s",           "%F %T" },
+  { keymap_uppercase, "%s | " },
+  { battery_perc, "BAT %s%% | ", "BAT0" },
+  { ram_perc, "RAM %s%% | ", NULL },
+  { cpu_perc, "CPU %s%% | ", NULL },
+  /* To get audio sink IDs/names, run `wpctl status`, `pactl list sinks`, or an analog */
+  { vol_perc, "VOL %s%% | ", "@DEFAULT_SINK@" },
+	{ datetime, "%s", "%a %b %d %I:%M %p" },
 };
