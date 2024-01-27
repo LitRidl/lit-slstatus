@@ -84,3 +84,23 @@ end:
 
 	return layout;
 }
+
+const char *
+keymap_uppercase(const char *unused)
+{
+  const char *layout = keymap(NULL);
+  if (!layout) {
+    return NULL;
+  }
+
+  char *uppercase_layout = strdup(layout);
+  if (!uppercase_layout) {
+    return NULL;
+  }
+
+  for (char *s = uppercase_layout; *s; ++s) {
+    *s = toupper((unsigned char)*s);
+  }
+
+  return uppercase_layout;
+}
