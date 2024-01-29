@@ -66,16 +66,22 @@ static const char unknown_str[] = "n/a";
  * username            username of current user        NULL
  * vol_perc            PulseAudio/PipeWire volume in   sink ID (@DEFAULT_SINK@, 1, etc)
  *                     percent (can be > 100)
+ * vol_mute            Audio sink mute status          sink ID (@DEFAULT_SINK@, 1, etc)
+ *                     as MUT or VOL
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
  * wifi_perc           WiFi signal in percent          interface name (wlan0)
  */
+
+/* Example: "US | MUT 40% | RAM 12% | CPU 0% | BAT 82% | Mon Jan 29 04:34 PM" */
+/* Each line is processed like `printf(args[i].fmt, args[i].func(args[i].args))` */
 static const struct arg args[] = {
-	/* function format          argument */
+	/* function   format   argument */
   { keymap_uppercase, "%s | " },
-  { battery_perc, "BAT %s%% | ", "BAT0" },
+  /* To get audio sink IDs/names, run `wpctl status`, `pactl list sinks`, or an analog */
+  { vol_mute, "%s ", "@DEFAULT_SINK@" },
+  { vol_perc, "%s%% | ", "@DEFAULT_SINK@" },
   { ram_perc, "RAM %s%% | ", NULL },
   { cpu_perc, "CPU %s%% | ", NULL },
-  /* To get audio sink IDs/names, run `wpctl status`, `pactl list sinks`, or an analog */
-  { vol_perc, "VOL %s%% | ", "@DEFAULT_SINK@" },
+  { battery_perc, "BAT %s%% | ", "BAT0" },
 	{ datetime, "%s", "%a %b %d %I:%M %p" },
 };

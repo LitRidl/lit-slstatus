@@ -62,6 +62,8 @@ static const char unknown_str[] = "n/a";
  * username            username of current user        NULL
  * vol_perc            PulseAudio/PipeWire volume in   sink ID (@DEFAULT_SINK@, 1, etc)
  *                     percent (can be > 100)
+ * vol_mute            Audio sink mute status          sink ID (@DEFAULT_SINK@, 1, etc)
+ *                     as MUT or VOL
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
  * wifi_perc           WiFi signal in percent          interface name (wlan0)
  */

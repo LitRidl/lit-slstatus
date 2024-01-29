@@ -7,7 +7,7 @@ only issuing the minimum of system calls required.
 
 ## Features
 - Battery percentage/state/time left
-- Volume percentage that works with PulseAudio and PipeWire
+- Volume percentage and mute status that works with PulseAudio and PipeWire
 - Cat (read file)
 - CPU usage
 - CPU frequency
