@@ -1,5 +1,11 @@
 /* See LICENSE file for copyright and license details. */
 
+struct arg {
+	const char *(*func)(const char *);
+	const char *fmt;
+	const char *args;
+};
+
 /* battery */
 const char *battery_perc(const char *);
 const char *battery_remaining(const char *);

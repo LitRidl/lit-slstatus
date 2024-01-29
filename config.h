@@ -1,6 +1,9 @@
 /* This is an opinionated 'config.h': modify it directly or run `cp config.def.h config.h`. */
 /* 'config.def.h' is the same as in the original slstatus repository except updated comments. */
 
+#include <stdlib.h>
+#include "slstatus.h"
+
 /* interval between updates (in ms) */
 const unsigned int interval = 2 * 1000;
 

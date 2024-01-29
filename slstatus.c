@@ -8,14 +8,7 @@
 #include <X11/Xlib.h>
 
 #include "arg.h"
-#include "slstatus.h"
 #include "util.h"
-
-struct arg {
-	const char *(*func)(const char *);
-	const char *fmt;
-	const char *args;
-};
 
 char buf[1024];
 static volatile sig_atomic_t done;
